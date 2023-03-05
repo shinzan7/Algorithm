@@ -1,5 +1,4 @@
 from sys import stdin
-
 input = stdin.readline
 
 N = int(input().strip())
@@ -9,7 +8,6 @@ for _ in range(N):
 
 visit = [False]*N
 answer = 1e6 * N
-path = []
 
 def dfs(cnt, cur, cost):
     global answer
@@ -19,11 +17,8 @@ def dfs(cnt, cur, cost):
     for i in range(N):
         if not visit[i] and mapp[cur][i] != 0:
             visit[i] = True
-            path.append(i)
             dfs(cnt+1, i, cost+mapp[cur][i])
             visit[i] = False
-            path.pop()
 
-path.append(0)
 dfs(0, 0, 0)
 print(answer)
